@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 
-// In JavaScript classes, you need to explicitly call super(); when defining the constructor of a subclass.
+// In JavaScript classes, you need to explicitly call super(); 
+// when defining the constructor of a subclass.
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
@@ -64,7 +65,6 @@ class Game extends React.Component {
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     const positional = this.state.positional
-    const position = current.position
 
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -90,7 +90,6 @@ class Game extends React.Component {
 
   render() {
     const history = this.state.history;
-    const position = this.state.positional
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -101,11 +100,9 @@ class Game extends React.Component {
         'Go to move #' + move + " *POSITION* =>: " + calculateColumn(step.position)  + calculateRow(step.position) :
         'Go to game start';
       return (
-        <div>
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
-                </div>
       );
     });
 

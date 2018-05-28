@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css'
+import './index.css';
 
-// In JavaScript classes, you need to explicitly call super(); 
-// when defining the constructor of a subclass.
+/* In JavaScript classes, you need to explicitly call
+super(); when defining the constructor of a subclass.*/
 function Square(props) {
   return (
     <button className="square" onClick={props.onClick}>
@@ -64,7 +64,7 @@ class Game extends React.Component {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    const positional = this.state.positional
+    const positional = this.state.positional;
 
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -77,15 +77,15 @@ class Game extends React.Component {
       }]),
       positional: positional.concat(i),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
+      xIsNext: !this.state.xIsNext
     });
   }
 
   jumpTo(step){
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0,
-    })
+      xIsNext: (step % 2) === 0
+    });
   }
 
   render() {
@@ -97,7 +97,9 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
 
       const desc = move ?
-        'Go to move #' + move + " *POSITION* =>: " + calculateColumn(step.position)  + calculateRow(step.position) :
+        'Go to move #' + move + ' *POSITION* =>: '
+        + calculateColumn(step.position)
+        + calculateRow(step.position) :
         'Go to game start';
       return (
         <li key={move}>
@@ -143,24 +145,21 @@ ReactDOM.render(
 
 function calculateColumn(x) {
  if (x == 0 || x == 3 || x == 6) {
-   return 'Col 1, '
- }
- else if (x == 1 || x == 4 || x == 7) {
-   return 'Col 2, '
-
+   return 'Col 1, ';
+ } else if (x == 1 || x == 4 || x == 7) {
+   return 'Col 2, ';
  } else {
-   return 'Col 3, '
+   return 'Col 3, ';
  }
 }
 
 function calculateRow(x) {
 if (x == 0 || x == 1 || x == 2) {
-  return 'Row 1'
+  return 'Row 1';
 } else if (x == 3 || x == 4 || x == 5) {
-  return 'Row 2'
-}
-else {
-  return 'Row 3'
+  return 'Row 2';
+} else {
+  return 'Row 3';
   }
 }
 
@@ -173,7 +172,7 @@ function calculateWinner(squares) {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6],
+    [2, 4, 6]
   ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
